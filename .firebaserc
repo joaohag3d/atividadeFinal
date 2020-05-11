@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cardstore-cb280": {
+      "hosting": {
+        "projetofinal": [
+          "cardstore-cb280"
+        ]
+      }
+    }
+  }
+}
