@@ -3,4 +3,5 @@ export class InformacaoCarta {
     atributo: string;
     tipo: string;
     arquetipo: string;
+    efeito: string;
 }

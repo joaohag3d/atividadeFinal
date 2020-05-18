@@ -7,11 +7,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { EdicaoRaridadeCartaComponent } from './edicao-raridade-carta/edicao-raridade-carta.component';
+import { CadastroRaridadeCartaComponent } from './cadastro-raridade-carta/cadastro-raridade-carta.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule, MatIcon } from '@angular/material/icon';
 
 @NgModule({
 
   declarations: [
-    AppComponent 
+    AppComponent,
+    EdicaoRaridadeCartaComponent,
+    CadastroRaridadeCartaComponent 
   ],
   imports: [
     BrowserModule,
@@ -20,6 +32,16 @@ import { environment } from 'src/environments/environment';
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
