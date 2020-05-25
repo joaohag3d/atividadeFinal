@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormGroupDirective } from '@angular/forms';
 import { RaridadeCartaService } from '../services/raridade-carta.service';
 import { RaridadeCarta } from '../models/raridadeCarta.model';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 
 @Component({
@@ -16,20 +17,25 @@ export class CadastroRaridadeCartaComponent implements OnInit {
    });
  
    @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
+  
   constructor(
     private formBuilder: FormBuilder,
     private raridadeCartaService: RaridadeCartaService,
-    
+    private location: Location,
    ) { }
 
   ngOnInit(): void {
   }
+  
   async submit() {
     if (!this.formulario.valid){
       return;
     }
 
+    this.formulario.disable();
+
     const raridadeCartas = this.formulario.value as RaridadeCarta;
+    
 
     const raridadeCartaRetorno = await this.raridadeCartaService.add(raridadeCartas);
 
@@ -38,6 +44,9 @@ export class CadastroRaridadeCartaComponent implements OnInit {
     this.formGroupDirective.resetForm();
     
 
+  }
+  voltar() {
+    this.location.back();
   }
 
 }

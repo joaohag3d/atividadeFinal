@@ -9,7 +9,7 @@
           </div>
     
           <mat-card-title>Raridade</mat-card-title>
-          <mat-card-subtitle>editando raridade {{raridadeCarta}}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf ="raridadeCarta" >editando raridade {{ raridadeCarta.id }}</mat-card-subtitle>
     
         </mat-card-header>
     
@@ -37,9 +37,9 @@
     
             <span fxFlex></span>
     
-            <!-- <div class="spinner-container" *ngIf="formulario.disabled">
+             <div class="spinner-container" *ngIf="formulario.disabled">
               <mat-spinner strokeWidth="2" diameter="22"> </mat-spinner>
-            </div> -->
+            </div> 
     
             <button mat-flat-button color="primary" class="uppercase" type="submit">
               Salvar

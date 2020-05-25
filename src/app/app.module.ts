@@ -17,13 +17,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
+import { CadastroCartaComponent } from './cadastro-carta/cadastro-carta.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
 
   declarations: [
     AppComponent,
     EdicaoRaridadeCartaComponent,
-    CadastroRaridadeCartaComponent 
+    CadastroRaridadeCartaComponent,
+    CadastroCartaComponent 
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,8 @@ import { MatIconModule, MatIcon } from '@angular/material/icon';
     MatCardModule,
     MatInputModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
     
   ],
   providers: [],
