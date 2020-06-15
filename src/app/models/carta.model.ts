@@ -4,4 +4,6 @@ export class Carta {
     informacaoCarta: string;
     preco: number;
     raridade: string;
+
+    imagens: string[];
 }

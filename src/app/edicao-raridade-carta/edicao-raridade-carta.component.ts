@@ -36,15 +36,17 @@ export class EdicaoRaridadeCartaComponent implements OnInit {
   }
   async submit() {
 
-    if (!this.formulario.valid) {
+    if (!this.formulario.valid || !this.raridadeCarta) {
       return;
     }
 
     this.formulario.disable();
 
-   // const raridadeCartas = this.formulario.value as RaridadeCarta;
+    const raridadeCartaEditado = this.formulario.value as RaridadeCarta;
 
-   // const raridadeCartaRetorno = await this.raridadeCartaService.add(raridadeCartas);
+    await this.raridadeCartaService.update(this.idRaridade, raridadeCartaEditado);
+
+    Object.assign(this.raridadeCarta, raridadeCartaEditado);
 
     this.formulario.enable();
 

@@ -38,4 +38,11 @@ export class RaridadeCartaService {
     
   }
 
+  async update(id: string, raridadeCarta: RaridadeCarta): Promise<void> {
+
+    await this.firestore.collection<RaridadeCarta>('raridadeCarta').doc(id).update(raridadeCarta);
+
+}
+
+
 }

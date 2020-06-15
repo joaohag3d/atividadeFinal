@@ -20,6 +20,12 @@ import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { CadastroCartaComponent } from './cadastro-carta/cadastro-carta.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { EdicaoListaImagensCartaComponent } from './edicao-lista-imagens-carta/edicao-lista-imagens-carta.component';
+import { EdicaoImagemCartaComponent } from './edicao-imagem-carta/edicao-imagem-carta.component';
+import { CadastroInformacaoCartaComponent } from './cadastro-informacao-carta/cadastro-informacao-carta.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 
 
 @NgModule({
@@ -28,7 +34,13 @@ import { MatSelectModule } from '@angular/material/select';
     AppComponent,
     EdicaoRaridadeCartaComponent,
     CadastroRaridadeCartaComponent,
-    CadastroCartaComponent 
+    CadastroCartaComponent,
+    EdicaoListaImagensCartaComponent,
+    EdicaoImagemCartaComponent,
+    CadastroInformacaoCartaComponent,
+    LoginComponent,
+    HomeComponent,
+    CadastroUsuarioComponent 
   ],
   imports: [
     BrowserModule,
