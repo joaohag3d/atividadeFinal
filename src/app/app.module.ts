@@ -26,6 +26,8 @@ import { CadastroInformacaoCartaComponent } from './cadastro-informacao-carta/ca
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { ValidatorsComponent } from './validators/validators.component';
+import { EdicaoCartaComponent } from './edicao-carta/edicao-carta.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
     CadastroInformacaoCartaComponent,
     LoginComponent,
     HomeComponent,
-    CadastroUsuarioComponent 
+    CadastroUsuarioComponent,
+    ValidatorsComponent,
+    EdicaoCartaComponent 
   ],
   imports: [
     BrowserModule,

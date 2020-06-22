@@ -7,7 +7,7 @@ import { AngularFireAuth} from '@angular/fire/auth';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth: AngularFireAuth) { }
+  constructor(public auth: AngularFireAuth) { }
 
   async ngOnInit(): Promise<void> {
 
