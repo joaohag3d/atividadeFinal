@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Carta } from '../models/carta.model';
 import { Observable } from 'rxjs';
+import { RaridadeCarta } from '../models/raridadeCarta.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,46 @@ export class CartasService {
   getObservable(): Observable<Carta[]> {
     return this.firestore.collection<Carta>('Cartas').valueChanges({ idField: 'id' });
   }
-  async add(carta: Carta): Promise<Carta> {
 
-    const docRef = await this.firestore.collection<Carta>('Cartas').add(carta);
-    const doc =await docRef.get();
-   
+  private convertToCarta(document: firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData>): Carta {
+
+    const dados = document.data();
+
+    const carta = {
+        id: document.id,
+        ...dados
+    } as Carta;
+
+    if (dados.dataEdicao) {
+        carta.dataEdicao = dados.dataEdicao.toDate();
+    }
+
+    if (dados.dataCadastro) {
+        carta.dataCadastro = dados.dataCadastro.toDate();
+    }
+
+    return carta;
+
+}
+  
+  async add(raridade: Carta): Promise<Carta> {
+
+    const documentRef = await this.firestore.collection<Carta>('Cartas').add(raridade);
+    const document = await documentRef.get();
+
+    return this.convertToCarta(document);
+
+}
+
+async get(id: string): Promise<Carta> {
+
+  const document = await this.firestore.collection<Carta>('Cartas').doc(id).get().toPromise();
+
+  return this.convertToCarta(document);
+
+}
+
  
-     return {
-       id: doc.id,
-       ...doc.data()
-     } as Carta;
-   }
-
    async update(id: string, carta: Carta): Promise<void> {
 
     await this.firestore.collection<Carta>('Cartas').doc(id).update(carta);

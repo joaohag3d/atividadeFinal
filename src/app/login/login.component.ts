@@ -1,7 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 class Autenticacao {
     email: string;
@@ -15,6 +15,8 @@ class Autenticacao {
 })
 export class LoginComponent implements OnInit {
 
+    erro: boolean;
+
     formulario = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
         senha: ['', Validators.required],
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
+        private router: Router,
         private auth: AngularFireAuth
     ) { }
 
@@ -29,6 +32,8 @@ export class LoginComponent implements OnInit {
     }
 
     async submit() {
+
+        this.erro = false;
 
         if (!this.formulario.valid) {
             return;
@@ -38,19 +43,18 @@ export class LoginComponent implements OnInit {
 
         const autenticacao = this.formulario.value as Autenticacao;
 
-        const userCredential = await this.auth.signInWithEmailAndPassword(autenticacao.email, autenticacao.senha);
+        try {
 
-        if (userCredential.user) {
+            const userCredential = await this.auth.signInWithEmailAndPassword(autenticacao.email, autenticacao.senha);
 
-          console.log('Autenticado');
+            this.router.navigate(['home']);
 
-        } else {
+        } catch (error) {
 
-          console.log('falhou')
-          console.log(userCredential);
+            this.erro = true;
+            this.formulario.enable();
+
         }
-        
-        console.log(userCredential);
 
     }
 

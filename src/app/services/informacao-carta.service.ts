@@ -27,6 +27,18 @@ export class InformacaoCartaService {
 
     }
 
+    async get(id: string): Promise<InformacaoCarta> {
+
+      const doc = await this.firestore.collection<InformacaoCarta>('informacaoCarta').doc(id).get().toPromise();
+  
+      return {
+        id: doc.id,
+        ...doc.data()
+      } as InformacaoCarta
+      
+    }
+  
+
     async update(id: string, informacaoCarta: InformacaoCarta): Promise<void> {
 
       await this.firestore.collection<InformacaoCarta>('informacaoCarta').doc(id).update(informacaoCarta);

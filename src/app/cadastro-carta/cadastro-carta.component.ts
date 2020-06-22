@@ -8,6 +8,7 @@ import { CartasService } from '../services/cartas.service';
 import { InformacaoCarta } from '../models/informacaoCarta.model';
 import { InformacaoCartaService } from '../services/informacao-carta.service';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro-carta',
@@ -35,6 +36,7 @@ export class CadastroCartaComponent implements OnInit {
     private informacaoCartaService: InformacaoCartaService,
     private cartasService: CartasService,
     private location: Location,
+    private snackBar: MatSnackBar,
     
    ) { }
 
@@ -50,12 +52,17 @@ export class CadastroCartaComponent implements OnInit {
     this.formulario.disable();
 
     const novaCarta = this.formulario.value as Carta;
+    novaCarta.dataCadastro = new Date();
 
     const carta = await this.cartasService.add(novaCarta);
 
-    this.formulario.enable();
+    console.log('Uma nova arte foi salva ----------------------');
+    console.log(carta);
 
+    this.formulario.enable();
     this.formGroupDirective.resetForm();
+
+    this.snackBar.open('Nova arte cadastrada com sucesso!');
     
 
   }

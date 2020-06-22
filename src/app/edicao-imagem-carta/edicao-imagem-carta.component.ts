@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Input, Output } from '@angular/core';
 import { CartasService } from '../services/cartas.service';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from '@angular/fire/storage';
+import { Subscription } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 export class Imagem {
   url: string;
@@ -44,7 +47,7 @@ export class EdicaoImagemCartaComponent implements OnInit, OnDestroy {
 
           this.enviando = true;
 
-          const nome = `${this.idArte}_${new Date().getTime()}_${this.imagem.arquivo.name}`;
+          const nome = `${this.idCarta}_${new Date().getTime()}_${this.imagem.arquivo.name}`;
 
           this.fileReference = this.fireStorage.ref(nome);
           this.uploadTask = this.fireStorage.upload(nome, this.imagem.arquivo);

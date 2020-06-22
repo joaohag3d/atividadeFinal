@@ -7,11 +7,15 @@ import { EdicaoListaImagensCartaComponent } from './edicao-lista-imagens-carta/e
 import { CadastroInformacaoCartaComponent } from './cadastro-informacao-carta/cadastro-informacao-carta.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
+
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
+
+  { path: 'usuarios/cadastro', component: CadastroUsuarioComponent },
   
   { path: 'raridadeCarta/cadastro', component: CadastroRaridadeCartaComponent},
   { path: 'raridadeCarta/:id/edicao', component: EdicaoRaridadeCartaComponent},

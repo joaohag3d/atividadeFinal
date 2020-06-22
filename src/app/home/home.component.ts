@@ -9,7 +9,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private auth: AngularFireAuth) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+
   }
+
+  async sair() {
+      await this.auth.signOut();
+  }
+
 
 }

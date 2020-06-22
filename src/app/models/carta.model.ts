@@ -4,6 +4,10 @@ export class Carta {
     informacaoCarta: string;
     preco: number;
     raridade: string;
+    dataCadastro: Date;
+    dataEdicao: Date;
+    
 
     imagens: string[];
+    descricaoCarta: any;
 }

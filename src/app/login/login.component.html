@@ -7,8 +7,8 @@
                 <mat-icon>mms</mat-icon>
             </div>
 
-            <mat-card-title>Tema</mat-card-title>
-            <mat-card-subtitle>Cadastro de um novo tema</mat-card-subtitle>
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-subtitle>Entre com as informações abaixo para acessar a aplicação</mat-card-subtitle>
 
         </mat-card-header>
 
@@ -26,6 +26,8 @@
                 <input matInput formControlName="senha" name="senha" type="password">
                 <mat-error *ngIf="formulario.controls['senha'].hasError('required')">A senha é obrigatória</mat-error>
             </mat-form-field>
+
+            <mat-error *ngIf="erro">O usuário não existe ou a senha está incorreta</mat-error>
 
         </mat-card-content>
 

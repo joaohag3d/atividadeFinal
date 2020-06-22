@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartasService } from '../services/cartas.service';
 import { ActivatedRoute } from '@angular/router';
 import { ArrayType } from '@angular/compiler';
+import { Carta } from '../models/carta.model';
 
 interface Imagem {
 url: string;
@@ -16,30 +17,30 @@ arquivo: File;
 })
 export class EdicaoListaImagensCartaComponent implements OnInit {
   carregando: boolean;
-  idArte: string;
-  descricaoArte: string;
+  idCarta: string;
+  descricaoCarta: string;
   imagens: Imagem[] = [];
 
   constructor(
       private actvitedRoute: ActivatedRoute,
-      private artesService: ArtesService
+      private cartasService: CartasService
   ) { }
 
   async ngOnInit() {
 
       this.carregando = true;
 
-      this.idArte = this.actvitedRoute.snapshot.paramMap.get('id');
+      this.idCarta = this.actvitedRoute.snapshot.paramMap.get('id');
 
-      const arte = await this.artesService.get(this.idArte);
+      const carta = await this.cartasService.get(this.idCarta);
 
-      this.descricaoArte = `${arte.nome} - ${arte.descricao}`;
+      this.descricaoCarta = `${carta.nome} - ${carta.descricaoCarta}`;
 
-      if (arte.imagens) {
+      if (carta.imagens) {
 
-          console.log(arte.imagens);
+          console.log(carta.imagens);
 
-          this.imagens = arte.imagens.map<Imagem>(urlImagem => {
+          this.imagens = carta.imagens.map<Imagem>(urlImagem => {
               return { url: urlImagem, arquivo: null };
           });
 
@@ -78,13 +79,13 @@ export class EdicaoListaImagensCartaComponent implements OnInit {
 
   async atualizarImagens() {
 
-      const imagensArte = this.imagens.filter(x => x.url).map(x => x.url);
+      const imagensCarta = this.imagens.filter(x => x.url).map(x => x.url);
 
-      console.log(imagensArte);
+      console.log(imagensCarta);
 
-      const arte = { imagens: imagensArte } as Arte;
+      const carta = { imagens: imagensCarta } as Carta;
 
-      await this.artesService.update(this.idArte, arte);
+      await this.cartasService.update(this.idCarta, carta);
 
   }
 
