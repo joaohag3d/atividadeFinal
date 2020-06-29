@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,10 @@ import { HomeComponent } from './home/home.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { ValidatorsComponent } from './validators/validators.component';
 import { EdicaoCartaComponent } from './edicao-carta/edicao-carta.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { CartasComponent } from './cartas/cartas.component';
 
 
 @NgModule({
@@ -44,7 +48,8 @@ import { EdicaoCartaComponent } from './edicao-carta/edicao-carta.component';
     HomeComponent,
     CadastroUsuarioComponent,
     ValidatorsComponent,
-    EdicaoCartaComponent 
+    EdicaoCartaComponent,
+    CartasComponent 
   ],
   imports: [
     BrowserModule,
@@ -64,9 +69,15 @@ import { EdicaoCartaComponent } from './edicao-carta/edicao-carta.component';
     MatIconModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSnackBarModule,
     
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+    { provide: LOCALE_ID, useValue: 'pt' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,10 @@
-<h1>HOME</h1>
-
-<div *ngIf="auth.user | async as user">
-    <h1>Olá, {{ user.email }}!</h1>
-</div>
-
-<button mat-raised-button color="primary" (click)="sair()">SAIR</button>
+<mat-toolbar color="primary" class="app-toolbar">
+    <mat-icon>whatshot</mat-icon>
+    <span> Cartas </span>
+    <div fxFlex></div>
+    <button mat-icon-button>
+        <mat-icon>account_curce</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="bg"> </div>
+<router-outlet></router-outlet>

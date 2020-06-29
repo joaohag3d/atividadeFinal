@@ -13,18 +13,23 @@ import { EdicaoCartaComponent } from './edicao-carta/edicao-carta.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
 
-  { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
-
   { path: 'usuarios/cadastro', component: CadastroUsuarioComponent },
-  { path: 'raridadeCarta/cadastro', component: CadastroRaridadeCartaComponent},
-  { path: 'carta/cadastro', component: CadastroCartaComponent},
-  { path: 'informacaoCarta/cadastro', component: CadastroInformacaoCartaComponent},
+
+  { path: 'home', component: HomeComponent, children:[
+    
+    { path: 'raridadeCarta/cadastro', component: CadastroRaridadeCartaComponent},
+    { path: 'carta/cadastro', component: CadastroCartaComponent},
+    { path: 'informacaoCarta/cadastro', component: CadastroInformacaoCartaComponent},
+    
+    
+    { path: 'raridadeCarta/:id/edicao', component: EdicaoRaridadeCartaComponent},
+    { path: 'carta/:id/edicao', component: EdicaoCartaComponent },
+    { path: 'carta/:id/edicao/imagens', component: EdicaoListaImagensCartaComponent},
   
-  
-  { path: 'raridadeCarta/:id/edicao', component: EdicaoRaridadeCartaComponent},
-  { path: 'carta/:id/edicao', component: EdicaoCartaComponent },
-  { path: 'carta/:id/edicao/imagens', component: EdicaoListaImagensCartaComponent},
+
+  ]},
+
 
  
   

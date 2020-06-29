@@ -7,8 +7,8 @@ import { RaridadeCarta } from '../models/raridadeCarta.model';
 import { CartasService } from '../services/cartas.service';
 import { InformacaoCarta } from '../models/informacaoCarta.model';
 import { InformacaoCartaService } from '../services/informacao-carta.service';
-import { Location } from '@angular/common';
-// import { MatSnackBar } from '@angular/material/snack-bar';
+import { Location } from '@angular/common'; 
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro-carta',
@@ -36,8 +36,7 @@ export class CadastroCartaComponent implements OnInit {
     private informacaoCartaService: InformacaoCartaService,
     private cartasService: CartasService,
     private location: Location,
-    // private snackBar: MatSnackBar,
-    
+    private snackBar: MatSnackBar,
    ) { }
 
   ngOnInit(): void {
@@ -62,7 +61,7 @@ export class CadastroCartaComponent implements OnInit {
     this.formulario.enable();
     this.formGroupDirective.resetForm();
 
-  //  this.snackBar.open('Nova arte cadastrada com sucesso!');
+    this.snackBar.open('Nova arte cadastrada com sucesso!');
     
 
   }
