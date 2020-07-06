@@ -32,6 +32,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
  import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { CartasComponent } from './cartas/cartas.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -49,7 +53,8 @@ import { CartasComponent } from './cartas/cartas.component';
     CadastroUsuarioComponent,
     ValidatorsComponent,
     EdicaoCartaComponent,
-    CartasComponent 
+    CartasComponent,
+    CarrinhoComponent 
   ],
   imports: [
     BrowserModule,
@@ -72,6 +77,10 @@ import { CartasComponent } from './cartas/cartas.component';
     MatToolbarModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatDividerModule,
+
     
   ],
   providers: [

@@ -9,10 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { EdicaoCartaComponent } from './edicao-carta/edicao-carta.component';
+import { AdminGuard } from './guards/admin.guard';
+import { CartasComponent } from './cartas/cartas.component';
+import { AuthGuard } from './guards/auth.guard';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-
   { path: 'login', component: LoginComponent},
   { path: 'usuarios/cadastro', component: CadastroUsuarioComponent },
 
@@ -21,9 +24,11 @@ const routes: Routes = [
     { path: 'raridadeCarta/cadastro', component: CadastroRaridadeCartaComponent},
     { path: 'carta/cadastro', component: CadastroCartaComponent},
     { path: 'informacaoCarta/cadastro', component: CadastroInformacaoCartaComponent},
+    { path: 'cartas', component: CartasComponent},
+    { path: 'carrinho', component: CarrinhoComponent, canActivate: [AuthGuard] },
     
     
-    { path: 'raridadeCarta/:id/edicao', component: EdicaoRaridadeCartaComponent},
+    { path: 'raridadeCarta/:id/edicao', component: EdicaoRaridadeCartaComponent,  canActivate: [AdminGuard] },
     { path: 'carta/:id/edicao', component: EdicaoCartaComponent },
     { path: 'carta/:id/edicao/imagens', component: EdicaoListaImagensCartaComponent},
   
